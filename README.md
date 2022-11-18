@@ -1,24 +1,53 @@
-# README
+### Home Test Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. Write a code for getting number of attachments per user and type.
+Example of response:
+  [
+    { name: "John Smith", resume: 7, cover_letter: 3, photo: 1 },
+    { name: "Alex Green", resume: 0, cover_letter: 2, photo: 5 },
+    { name: "Jack Dopplet", resume: 0, cover_letter: 0, photo: 0 }
+  ]
 
-Things you may want to cover:
+2. Write a code that prevents uploading more that 1 resume for
+ a job-seeker that doesn't have email
 
-* Ruby version
+```ruby
+class CreateUsersAndAttachments < ActiveRecord::Migration
+  create_table :users do |t|
+    t.string :name
+    t.string :email
+    t.integer :role
 
-* System dependencies
+    t.timestamps
+  end
+```
+```ruby
+  create_table :attachments do |t|
+    t.string :title
+    t.string :file_path
+    t.references :user
+    t.integer :type
 
-* Configuration
+    t.timestamps
+  end
+end
+```
 
-* Database creation
+=========== Models
 
-* Database initialization
+```ruby
+class User < ActiveRecord::Base
+  has_many :attachments
 
-* How to run the test suite
+  enum role: [:admin, :job_seeker, :employer]
+end
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+```ruby
+class Attachment < ActiveRecord::Base
+  belongs_to :user
 
-* Deployment instructions
-
-* ...
+  enum type: [:resume, :cover_letter, :photo]
+end
+```
+### My Solution
