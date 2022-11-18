@@ -12,21 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :name %> <br />
+    <%= form.text_field :name, required: true %> <br />
   </div>
 
   <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.label :email %> <br />
+    <%= form.text_field :email, required: true %> <br />
   </div>
 
   <div class="field">
-    <%= form.label :role %>
-    <%= form.select(:color, User.roles.keys.map {|key| [key.humanize, key]}, prompt: true) %> 
+    <%= form.label :role %>  <br />
+    <%= form.select(:role, User.roles.keys.map {|key| [key.humanize, key]}, {prompt: true}, {required: true}) %>  <br />
   </div>
-
+  <br />
   <div class="actions">
     <%= form.submit %>
   </div>
-<% end %>
+<% end %> <br />

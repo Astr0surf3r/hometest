@@ -1,19 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col">
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+    <p id="notice"><%= notice %></p>
+    
+    </div>
+  </div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <div class="row">
+    <div class="col">
+      <h1> Show User <%= @user.name %></h1>
+      <p>
+        <strong>Name:</strong>
+        <%= @user.name %>
+      </p>
+      
+      <p>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </p>
+      
+      <p>
+        <strong>Role:</strong>
+        <%= @user.role %>
+      </p>
+      
+      <%= link_to 'Edit', edit_user_path(@user) %> |
+      <%= link_to 'Back', users_path %>
+    
+    </div>
+  </div>
+</div>
