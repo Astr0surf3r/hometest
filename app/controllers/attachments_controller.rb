@@ -28,6 +28,7 @@ class AttachmentsController < ApplicationController
     respond_to do |format|
       if job_seeker_condition(@user, @type_doc)
         format.html { render :new, status: :unprocessable_entity }
+        flash.now[:notice] = "You can't uploading more that 1 resume for a job-seeker that doesn't have email."
       elsif @attachment.save
         format.html { redirect_to attachment_url(@attachment), notice: 'Attachment was successfully created.' }
         format.json { render :show, status: :created, location: @attachment }
