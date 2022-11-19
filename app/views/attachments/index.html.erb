@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <p id="notice"><%= notice %></p>
+    
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+
+      <h1>Attachments</h1>
+      
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>User</th>
+            <th>Type</th>
+            <th> download </th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <% @attachments.each do |attachment| %>
+            <tr>
+              <td><%= attachment.title %></td>
+              <td><%= attachment.user.name %></td>
+              <td><%= attachment.type_doc %></td>
+              <% if attachment.doc.attachment %>
+              <td><%= link_to attachment.doc.filename, rails_blob_path(attachment.doc, disposition: 'attachment') %> </td>
+              <% else %>
+              <td>No file charged</td>
+              <% end %>
+              <td><%= link_to 'Show', attachment %></td>
+              <td><%= link_to 'Edit', edit_attachment_path(attachment) %></td>
+              <td><%= link_to 'Destroy', attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    
+    </div>
+  </div>
+
+<br>
+
+<%= link_to 'New Attachment', new_attachment_path %>
+
+</div>

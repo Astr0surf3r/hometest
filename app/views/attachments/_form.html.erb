@@ -1,0 +1,37 @@
+<%= form_with(model: attachment) do |form| %>
+  <% if attachment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(attachment.errors.count, "error") %> prohibited this attachment from being saved:</h2>
+
+      <ul>
+        <% attachment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %> <br />
+    <%= form.text_field :title, required: true %> <br />
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %> <br />
+    <%= form.select(:user_id, User.all.collect {|p| [ p.name, p.id ] }, { prompt: true }, {required: true}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type %> <br />
+    <%= form.select(:type_doc, Attachment.type_docs.keys.map {|key| [key.humanize, key]}, {prompt: true}, {required: true}) %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :doc %> <br />
+    <%= form.file_field :doc %> <br />
+  </div>
+  <br />
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
