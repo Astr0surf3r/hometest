@@ -51,3 +51,39 @@ class Attachment < ActiveRecord::Base
 end
 ```
 ### My Solution
+
+before to install the app you have to installed *ruby* and *rails*. This webapp wors with the follow versions
+
+```code
+ruby '2.7.1'
+rails '6.1.7'
+```
+after that you can clone the app
+```shell
+$ git clone git@github.com:Astr0surf3r/hometest.git
+$ cd hometest
+$ bundle install
+$ rails db:migrate
+$ rails db:seed
+$ rails s
+```
+
+to checkout my solution at **point 1.** you have to click in Final Report page
+
+```code
+http://localhost:3000/final-report
+```
+
+And at the end to checkout the solution at **point 2.** you have to go at the follow page 
+
+```code
+http://localhost:3000/attachments/new
+```
+
+and try to submit the follow data:
+
+Title: Example
+User: Venusia
+Type: Resume
+
+and after submit the form. A message will appear in the browser!
